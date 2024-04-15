@@ -59,7 +59,7 @@ const Register = () => {
 
     try {
       const resp = await axios.post(`${url}/user/Register`,formData)
-      toast.success('User Registeres Successfully')
+      toast.success('User Registered Successfully')
       navigate('/login')
     } catch (error) {
       console.log(error)
