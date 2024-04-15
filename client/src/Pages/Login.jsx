@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink, useNavigate } from "react-router-dom";
 import url from "../port";
@@ -33,6 +33,13 @@ const Login = () => {
       toast.error(error.response.data.error)
     }
   };
+
+  useEffect(()=>{
+    let token = localStorage.getItem('token')
+    if(token){
+      navigate('/')
+    }
+  })
 
   const validateEmail = (email) => {
     // Regular expression for basic email validation

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -14,6 +14,13 @@ const Register = () => {
   const [passwordErrors, setPasswordErrors] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    let token = localStorage.getItem('token')
+    if(token){
+      navigate('/')
+    }
+  })
 
   const handleTogglePasswordVisibility = (e) => {
     e.preventDefault();
@@ -58,7 +65,7 @@ const Register = () => {
     };
 
     try {
-      const resp = await axios.post(`${url}/user/Register`,formData)
+       await axios.post(`${url}/user/Register`,formData)
       toast.success('User Registered Successfully')
       navigate('/login')
     } catch (error) {
