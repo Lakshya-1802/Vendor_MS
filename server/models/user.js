@@ -25,6 +25,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'password is required']
     },
+    profile_pic: {
+        type: String,
+    },
 });
 
 const User = mongoose.model('user', UserSchema); 

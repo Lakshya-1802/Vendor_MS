@@ -75,6 +75,15 @@ const Register = () => {
     setSubmitted(true);
   };
 
+  const handleGoogleAuth = () => {
+    try {
+      window.location.href=`${url}/auth/google/callback`
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <>
       <div className="mt-10 flex items-center justify-center">
@@ -149,7 +158,7 @@ const Register = () => {
 
             <p className="text-center font-semibold text-2xl">OR</p>
             <div className="flex justify-center space-x-4">
-              <button>
+              <button onClick={handleGoogleAuth}>
                 <FcGoogle className="rounded-full " size={42} />
               </button>
             </div>

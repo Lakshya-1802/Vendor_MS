@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Table from '../Components/Table';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import url from '../port';
 import axios from 'axios';
 
 
 const Home = () => {
-  const [userData, setUserData] = useState([]);
+  // const [userData, setUserData] = useState([]);
   const [uid, setUid] = useState(null);
   const pageSize = 5;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const token = localStorage.getItem('token')
   const [data,setData]= useState([])
   const fetchUserData = async () => {
@@ -20,7 +20,7 @@ const Home = () => {
           'Content-Type': 'application/json'
         }
       });
-      setUserData(response.data);
+      // setUserData(response.data);
       setUid(response.data.uid); // Set uid after fetching user data
     } catch (error) {
       console.log(error);
@@ -45,6 +45,24 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
+  }, [uid]);
+
+  const getUser = async ()=>{
+    try {
+      const resp = await axios.get(`${url}/auth/login/success`,{
+        withCredentials:true
+      })
+      localStorage.setItem('token',resp?.data?.token)
+      
+      console.log(resp.data,'gog');
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getUser();
   }, [uid]);
  
 

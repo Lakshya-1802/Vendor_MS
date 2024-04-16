@@ -47,8 +47,13 @@ const Login = () => {
     return re.test(email);
   };
 
-  const googleSignin = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self");
+  const handleGoogleAuth = () => {
+    try {
+      window.location.href=`${url}/auth/google/callback`
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -104,7 +109,7 @@ const Login = () => {
             </div>
             <p className="text-center font-semibold text-2xl">OR</p>
             <div className="flex justify-center space-x-4">
-              <button onClick={googleSignin}>
+              <button onClick={handleGoogleAuth}>
                 <FcGoogle className="rounded-full hover:size:8" size={42} />
               </button>
             </div>
