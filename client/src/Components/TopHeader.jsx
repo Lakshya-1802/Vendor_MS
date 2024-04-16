@@ -20,6 +20,7 @@ const TopHeader = () => {
   }
 
   const token = localStorage.getItem("token") || getCookie("token");
+  console.log(token,'prot')
 
   const fetchUserData = async () => {
     try {

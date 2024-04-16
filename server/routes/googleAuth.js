@@ -10,8 +10,9 @@ const router = express.Router();
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_URL,
-    failureRedirect: `${process.env.CLIENT_URL}login/failed`,
+    // successRedirect: 'http://localhost:3000/',
+    successRedirect: 'https://vendor-management-service.onrender.com/',
+    failureRedirect: `https://vendor-management-service.onrender.com/login/failed`,
   })
 );
 

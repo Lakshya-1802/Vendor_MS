@@ -21,7 +21,8 @@ app.use((req,res,next)=>{
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors({
-    origin:['http://localhost:3000','http://192.168.1.14:3000','https://vendor-management-system-xi.vercel.app'], 
+    // origin:['http://localhost:3000','http://192.168.1.14:3000'], 
+    origin:['https://vendor-management-system-xi.vercel.app'], 
     methods:'GET,POST,PATCH,DELETE,PUT',
     credentials:true, 
 }));
