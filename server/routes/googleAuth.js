@@ -11,8 +11,8 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     // successRedirect: 'http://localhost:3000/',
-    successRedirect: 'https://vendor-management-service.onrender.com/',
-    failureRedirect: `https://vendor-management-service.onrender.com/login/failed`,
+    successRedirect: 'https://vendor-management-system-xi.vercel.app/',
+    failureRedirect: `https://vendor-management-system-xi.vercel.app/login/failed`,
   })
 );
 
